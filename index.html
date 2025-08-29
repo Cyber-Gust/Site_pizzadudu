@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forneria 360º - A Autêntica Pizza Napolitana</title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Teko:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Swiper.js (Carrossel) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    
+    <!-- Leaflet.js (Mapa) -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+</head>
+<body>
+
+    <!-- ===== PRELOADER (TELA DE LOADING) ===== -->
+    <div id="preloader">
+        <div class="pizza-spinner">
+            <img src="/images/spinner.png" alt="Pizza girando" class="pizza-slice">
+        </div>
+    </div>
+
+    <!-- ===== HEADER (CABEÇALHO) ===== -->
+    <header id="header">
+        <nav class="container">
+            <a class="logo" href="#">FORNERIA <span>360º</span></a>
+            <div class="menu">
+                <ul class="grid">
+                    <li><a class="title" href="#home">Início</a></li>
+                    <li><a class="title" href="#menu-sabores">Cardápio</a></li>
+                    <li><a class="title" href="#about">Nossa História</a></li>
+                    <li><a class="title" href="#location">Onde Estamos</a></li>
+                </ul>
+            </div>
+            <a href="#" class="btn-primary">Peça Online</a>
+            <div class="toggle icon-menu">☰</div>
+            <div class="toggle icon-close">✕</div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- ===== HOME (SEÇÃO INICIAL) ===== -->
+        <section class="section" id="home">
+            <div class="container grid">
+                <div class="image">
+                    <img src="/images/banner_inicio.jpg" 
+                         alt="Banner com uma pizza napolitana deliciosa"
+                         onerror="this.onerror=null;this.src='https://placehold.co/600x600/c0392b/ffffff?text=Erro+ao+carregar+imagem';">
+                </div>
+                <div class="text">
+                    <h1 class="title">A verdadeira arte da pizza napolitana</h1>
+                    <p>Massa de longa fermentação, ingredientes frescos e paixão em cada fatia. Sinta o sabor da tradição direto do nosso forno para sua mesa.</p>
+                    <a class="button" href="#">Ver Cardápio</a>
+                </div>
+            </div>
+        </section>
+
+        <div class="divider-1"></div>
+
+        <!-- ===== MENU DE SABORES (CARROSSEL) ===== -->
+        <section class="section" id="menu-sabores">
+            <div class="container">
+                <header>
+                    <h2 class="title">Nossos Sabores Clássicos</h2>
+                    <p class="subtitle">Deslize para o lado e descubra as pizzas que conquistam a todos.</p>
+                </header>
+                <div class="swiper-container">
+                    <div class="swiper">
+                        <div class="swiper-wrapper">
+                            <!-- Pizza Card 1 -->
+                            <div class="swiper-slide">
+                                <div class="pizza-card">
+                                    <div class="pizza-image">
+                                        <img src="/images/marguerita.jpg"
+                                             onerror="this.onerror=null;this.src='https://placehold.co/400x400/27ae60/ffffff?text=Erro';">
+                                    </div>
+                                    <h3 class="pizza-title">Margherita</h3>
+                                    <p class="pizza-description">Molho de tomate San Marzano, mozzarella de búfala, manjericão fresco e azeite extra virgem.</p>
+                                    <span class="pizza-price">R$ 59,00</span>
+                                    <a href="#" class="btn-secondary">Pedir Agora</a>
+                                </div>
+                            </div>
+                            <!-- Pizza Card 2 -->
+                            <div class="swiper-slide">
+                                <div class="pizza-card">
+                                    <div class="pizza-image">
+                                        <img src="/images/calabresa.jpg"
+                                             onerror="this.onerror=null;this.src='https://placehold.co/400x400/c0392b/ffffff?text=Erro';">
+                                    </div>
+                                    <h3 class="pizza-title">Calabresa</h3>
+                                    <p class="pizza-description">Linguiça calabresa artesanal curada, cebola roxa caramelizada e azeitonas pretas.</p>
+                                    <span class="pizza-price">R$ 59,00</span>
+                                    <a href="#" class="btn-secondary">Pedir Agora</a>
+                                </div>
+                            </div>
+                            <!-- Pizza Card 3 -->
+                            <div class="swiper-slide">
+                                <div class="pizza-card">
+                                    <div class="pizza-image">
+                                        <img src="/images/3queijos.jpg"
+                                             onerror="this.onerror=null;this.src='https://placehold.co/400x400/f1c40f/ffffff?text=Erro';">
+                                    </div>
+                                    <h3 class="pizza-title">Três Queijos</h3>
+                                    <p class="pizza-description">Uma combinação perfeita de mozzarella, provolone e parmesão.</p>
+                                    <span class="pizza-price">R$ 69,00</span>
+                                    <a href="#" class="btn-secondary">Pedir Agora</a>
+                                </div>
+                            </div>
+                             <!-- Pizza Card 4 -->
+                            <div class="swiper-slide">
+                                <div class="pizza-card">
+                                    <div class="pizza-image">
+                                        <img src="/images/bacon.jpg"
+                                             onerror="this.onerror=null;this.src='https://placehold.co/400x400/8e44ad/ffffff?text=Erro';">
+                                    </div>
+                                    <h3 class="pizza-title">Bacon</h3>
+                                    <p class="pizza-description">Deliciosa combinação de bacon croante com cebola roxa, simplesmente irresistível.</p>
+                                    <span class="pizza-price">R$ 59,00</span>
+                                    <a href="#" class="btn-secondary">Pedir Agora</a>
+                                </div>
+                            </div>
+                            <!-- Pizza Card 5 -->
+                            <div class="swiper-slide">
+                                <div class="pizza-card">
+                                    <div class="pizza-image">
+                                        <img src="/images/frango.jpg"
+                                             onerror="this.onerror=null;this.src='https://placehold.co/400x400/8e44ad/ffffff?text=Erro';">
+                                    </div>
+                                    <h3 class="pizza-title">Frango</h3>
+                                    <p class="pizza-description">Sabor que nunca se esquece, frango desfiado om milho verde.</p>
+                                    <span class="pizza-price">R$ 59,00</span>
+                                    <a href="#" class="btn-secondary">Pedir Agora</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Navegação do Carrossel -->
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="divider-2"></div>
+
+        <!-- ===== ABOUT (NOSSA HISTÓRIA) ===== -->
+        <section class="section" id="about">
+            <div class="container grid">
+                <div class="image">
+                     <img src="/images/fornoalenha.jpg" 
+                         alt="Forno a lenha da Forneria 360"
+                         onerror="this.onerror=null;this.src='https://placehold.co/600x700/008C45/ffffff?text=Erro';">
+                </div>
+                <div class="text">
+                    <h2 class="title">Paixão que atravessa gerações</h2>
+                    <p>A Forneria 360º nasceu de um sonho de família: trazer para o coração da cidade a autêntica pizza napolitana, com a receita que aprendemos com nossos avós na Itália. Nosso segredo está na simplicidade, no respeito aos ingredientes e no calor do nosso forno, que assa a pizza perfeita em até 90 segundos a 360 graus.</p>
+                    <p>Cada pizza conta uma história de dedicação e amor. Convidamos você a fazer parte dela.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="divider-1"></div>
+
+        <!-- ===== LOCATION (LOCALIZAÇÃO) ===== -->
+        <section class="section" id="location">
+            <div class="container">
+                <header>
+                    <h2 class="title">Venha nos visitar!</h2>
+                    <p class="subtitle">Estamos esperando por você com o forno quente e um sorriso no rosto.</p>
+                </header>
+                <div id="map"></div>
+                <div class="address-info">
+                    <p>📍 R. Cel. Tamarindo, 73A - Centro, São João del Rei - MG</p>
+                    <p><strong>Horário de Funcionamento:</strong> Terça a Domingo, das 18h às 23h</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- ===== CTA FINAL ===== -->
+        <section class="section" id="cta-final">
+            <div class="container">
+                <h2 class="title">Ficou com água na boca?</h2>
+                <p>Não passe vontade! Peça agora e receba a melhor pizza da sua vida no conforto da sua casa.</p>
+                <a href="#" class="btn-primary-lg">Fazer meu Pedido Agora!</a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ===== FOOTER (RODAPÉ) ===== -->
+    <footer class="section">
+        <div class="container footer-grid">
+            <!-- Coluna de Páginas -->
+            <div class="footer-links">
+                <h3 class="footer-title">Páginas</h3>
+                <ul>
+                    <li><a href="#home">Início</a></li>
+                    <li><a href="#about">Nossa História</a></li>
+                    <li><a href="#menu-sabores">Cardápio</a></li>
+                    <li><a href="#location">Onde Estamos</a></li>
+                </ul>
+            </div>
+
+            <!-- Coluna Central -->
+            <div class="footer-brand">
+                <a class="logo logo-alt" href="#home">FORNERIA <span>360º</span></a>
+                <p class="footer-description">É uma forma de arte, uma linguagem que comunica através das fronteiras, uma expressão de amor e criatividade.</p>
+                <div class="social-links">
+                    <a href="#" class="social-icon">F</a>
+                    <a href="#" class="social-icon">X</a>
+                    <a href="#" class="social-icon">I</a>
+                </div>
+            </div>
+
+            <!-- Coluna de Utilidades -->
+            <div class="footer-links">
+                <h3 class="footer-title">Utilidades</h3>
+                <ul>
+                    <li><a href="#">Contato</a></li>
+                    <li><a href="#">Plataforma de Pedidos</a></li>
+                    <li><a href="#">Trabalhe Conosco</a></li>
+                    <li><a href="#">Política de Privacidade</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>©2024 Forneria 360º. Todos os direitos reservados.</p>
+            <div class="developer">
+                <p>Desenvolvido por <a href="#" class="logo-dev">BitBloom AI</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <!-- Swiper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <!-- Leaflet.js -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <!-- ScrollReveal (Animações de Scroll) -->
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <!-- Arquivo JS principal -->
+    <script src="script.js"></script>
+</body>
+</html>
