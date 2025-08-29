@@ -149,15 +149,10 @@ img {
     align-items: center;
 }
 
-.logo {
-    font-family: var(--title-font);
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--color-dark);
-}
-
-.logo span {
-    color: var(--color-red);
+/* ESTILO ATUALIZADO PARA A LOGO */
+.logo img {
+    height: 60px; /* Ajuste a altura da sua logo conforme necessário */
+    width: auto;
 }
 
 #header .menu {
@@ -384,7 +379,7 @@ img {
 
 /* ===== CTA FINAL ===== */
 #cta-final {
-    background: url('https://placehold.co/1920x500/000000/ffffff?text=Banner+de+Fundo+Texturizado') no-repeat center center;
+    background: url('/images/banner_final.jpg') no-repeat center center;
     background-size: cover;
     text-align: center;
     color: var(--color-white);
