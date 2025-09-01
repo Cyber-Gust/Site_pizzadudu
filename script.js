@@ -73,8 +73,8 @@ function main() {
 
     /* ===== MAPA INTERATIVO (LEAFLET.JS) ===== */
     // Coordenadas ATUALIZADAS para a Forneria 360 em Santo André
-    const latitude = -23.66205;
-    const longitude = -46.53815;
+    const latitude = -21.130684998711985;
+    const longitude = -44.25538711880628;
 
     try {
         const map = L.map('map').setView([latitude, longitude], 17); // Aumentei o zoom para 17
@@ -85,14 +85,14 @@ function main() {
 
         // Ícone customizado
         const pizzaIcon = L.icon({
-            iconUrl: 'https://placehold.co/40x40/c0392b/ffffff?text=🍕',
+            iconUrl: 'images/logo.png',
             iconSize: [40, 40], 
             iconAnchor: [20, 40], 
             popupAnchor: [0, -40]
         });
 
         L.marker([latitude, longitude], { icon: pizzaIcon }).addTo(map)
-            .bindPopup('<b>Forneria 360º</b><br>Av. Portugal, 1045')
+            .bindPopup('<b>Forneria 360º</b><br>R. Cel. Tamarindo, 73A')
             .openPopup();
     } catch (error) {
         console.error("Erro ao inicializar o mapa. Verifique se o elemento #map existe.", error);
