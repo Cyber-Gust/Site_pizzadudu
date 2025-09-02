@@ -250,6 +250,9 @@ img {
 
 #home .button {
     background: var(--color-green);
+    min-height: 50px;
+    min-width: 250px;
+    text-align: center;
     color: var(--color-white);
     padding: 1rem 2.5rem;
     border-radius: 2rem;
@@ -334,9 +337,16 @@ img {
     background: var(--color-red);
 }
 
-.swiper-button-next, .swiper-button-prev {
+.swiper-button-next {
     color: var(--color-red) !important;
+    right: -2px !important; /* Afasta o botão da direita */
 }
+
+.swiper-button-prev {
+    color: var(--color-red) !important;
+    left: -2px !important; /* Afasta o botão da esquerda */
+}
+
 
 /* ===== ABOUT SECTION ===== */
 #about .container {
@@ -451,7 +461,7 @@ footer.section {
 }
 
 .footer-links ul li {
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
 }
 
 .footer-links ul li a {
@@ -530,8 +540,8 @@ footer.section {
 .developer .logo-dev {
     font-family: var(--title-font);
     font-size: 1.5rem;
-    margin-right: 20px;
-    color: var(--color-blue);
+    margin-right: 30px;
+    color: #2e2ed2;
     transition: color 0.3s;
 }
 
@@ -618,5 +628,54 @@ footer.section {
     .footer-bottom {
         flex-direction: column;
         gap: 1rem;
+    }
+}
+
+/* ===== RESPONSIVIDADE (DEPOIS DE 1200PX) ===== */
+@media (min-width: 1200px) {
+    /* Ajusta o container para ter um padding maior e ficar mais centralizado */
+    .container {
+        max-width: 1400px; /* Ou um valor maior, dependendo do design */
+        margin-left: auto;
+        margin-right: auto;
+        padding: 0 4rem; /* Aumenta o espaçamento lateral em telas grandes */
+    }
+
+    /* Aumenta o espaçamento vertical entre as seções para dar mais "respiro" */
+    .section {
+        padding: 10rem 0;
+    }
+
+    /* Ajusta o tamanho da fonte para os títulos principais */
+    .section .title {
+        font-size: 4.5rem;
+    }
+
+    /* Aumenta o espaçamento do grid para telas maiores */
+    .grid {
+        gap: 4rem;
+    }
+
+    /* Ajusta o layout da seção Home para telas grandes */
+    #home .text h1 {
+        font-size: 5.5rem; /* Aumenta o tamanho do título principal */
+        margin-bottom: 2rem;
+    }
+
+    #home .text p {
+        font-size: 1.5rem; /* Aumenta o tamanho da fonte do parágrafo */
+    }
+
+    /* Ajusta a largura da imagem na seção About para evitar que fique muito larga */
+    #about .image img {
+        max-width: 600px;
+    }
+
+    /* Garante que o footer ocupe a largura total e o conteúdo se alinhe */
+    .footer-grid {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 4rem;
+        gap: 6rem;
     }
 }
