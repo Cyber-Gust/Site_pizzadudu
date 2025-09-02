@@ -629,6 +629,10 @@ footer.section {
         flex-direction: column;
         gap: 1rem;
     }
+    .btn-primary-lg {
+        margin-top: 20px;
+        font-size: 0.9rem;
+    }
 }
 
 /* ===== RESPONSIVIDADE (DEPOIS DE 1200PX) ===== */
