@@ -22,7 +22,7 @@
     />
     <meta
       property="og:image"
-      content="./assets/cardapio-atual-forneria-360.jpeg"
+      content="./assets/Cardapio_Forneria.jpeg"
     />
     <meta name="twitter:card" content="summary_large_image" />
     <link
@@ -433,66 +433,38 @@
         gap: 18px;
       }
       .pizza-tile {
-        cursor: pointer;
-        padding: 22px;
+        padding: 0;
         min-height: 430px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        transition: 0.3s ease;
         position: relative;
         overflow: hidden;
       }
-      .pizza-tile:hover,
-      .pizza-tile.is-active {
-        transform: translateY(-8px);
-        box-shadow: var(--shadow);
+      .pizza-tile h3,
+      .pizza-tile .ingredient {
+        margin-left: 22px;
+        margin-right: 22px;
       }
-      .pizza-tile:hover::after,
-      .pizza-tile.is-active::after {
-        transform: scale(1);
+      .pizza-tile > .flex {
+        padding: 0 22px 22px;
       }
       .pizza-art {
         position: relative;
-        height: 190px;
-        display: grid;
-        place-items: center;
-        margin: -4px 0 12px;
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        min-height: 210px;
+        margin: 0 0 22px;
+        overflow: hidden;
+        background: #e7ddc5;
       }
       .pizza-art img {
-        position: absolute;
-        width: 180px;
-        height: 180px;
-        border-radius: 50%;
+        display: block;
+        width: 100%;
+        height: 100%;
         object-fit: cover;
-        transition: 0.38s ease;
-        opacity: 0.08;
-        filter: grayscale(1) contrast(1.45);
-        transform: scale(0.92);
-      }
-      .pizza-tile:hover .pizza-art img,
-      .pizza-tile.is-active .pizza-art img {
         opacity: 1;
         filter: none;
-        transform: scale(1.05) rotate(3deg);
-        box-shadow: 0 18px 30px rgba(42, 25, 11, 0.18);
-      }
-      .pizza-sketch {
-        position: absolute;
-        width: 180px;
-        height: 180px;
-        border-radius: 50%;
-        background-image: url("./assets/pizza-desenho.png");
-        background-size: contain;
-        background-position: center;
-        background-repeat: no-repeat;
-        transition: 0.3s ease;
-        opacity: 0.85;
-        }
-      .pizza-tile:hover .pizza-sketch,
-      .pizza-tile.is-active .pizza-sketch {
-        opacity: 0;
-        transform: scale(0.8) rotate(-12deg);
       }
       .price {
         font-family: "Cormorant Garamond", serif;
@@ -924,7 +896,7 @@
         "@type": "Restaurant",
         "name": "Forneria 360º",
         "url": "https://www.forneria360.com.br/",
-        "image": "https://www.forneria360.com.br/assets/cardapio-atual-forneria-360.jpeg",
+        "image": "https://www.forneria360.com.br/assets/Cardapio_Forneria.jpeg",
         "servesCuisine": ["Pizza napolitana", "Italiana"],
         "priceRange": "R$65-R$75",
         "telephone": "+55 32 99941-3289",
@@ -994,16 +966,11 @@
             Escolha no site. Finalize no InstaDelivery.
           </h1>
           <div class="pizza-grid mt-12">
-            <article class="pizza-tile paper-flat reveal" data-pizza-tile>
+            <article class="pizza-tile paper-flat reveal">
               <div>
-                <span class="chip"
-                  ><i class="w-2 h-2 rounded-full bg-[#c91f2c] inline-block"></i
-                  >Clássica</span
-                >
                 <div class="pizza-art">
-                  <div class="pizza-sketch"></div>
                   <img
-                    src="./assets/marguerita.jpg"
+                    src="./assets/pizzas/marguerita.png"
                     alt="Pizza Margherita"
                   />
                 </div>
@@ -1018,7 +985,7 @@
                 </p>
               </div>
               <div class="flex items-center justify-between gap-3 mt-5">
-                <span class="price">65,00</span
+                <span class="price">80,00</span
                 ><a
                   class="btn btn-ghost !min-h-10 !px-4"
                   href="https://instadelivery.com.br/forneria360"
@@ -1028,16 +995,11 @@
                 >
               </div>
             </article>
-            <article class="pizza-tile paper-flat reveal" data-pizza-tile>
+            <article class="pizza-tile paper-flat reveal">
               <div>
-                <span class="chip"
-                  ><i class="w-2 h-2 rounded-full bg-[#c91f2c] inline-block"></i
-                  >Queridinha</span
-                >
                 <div class="pizza-art">
-                  <div class="pizza-sketch"></div>
                   <img
-                    src="./assets/calabresa.jpg"
+                    src="./assets/pizzas/calabresa.png"
                     alt="Pizza Calabresa"
                   />
                 </div>
@@ -1052,7 +1014,7 @@
                 </p>
               </div>
               <div class="flex items-center justify-between gap-3 mt-5">
-                <span class="price">65,00</span
+                <span class="price">80,00</span
                 ><a
                   class="btn btn-ghost !min-h-10 !px-4"
                   href="https://instadelivery.com.br/forneria360"
@@ -1062,19 +1024,11 @@
                 >
               </div>
             </article>
-            <article
-              class="pizza-tile paper-flat reveal is-active"
-              data-pizza-tile
-            >
+            <article class="pizza-tile paper-flat reveal">
               <div>
-                <span class="chip"
-                  ><i class="w-2 h-2 rounded-full bg-[#c91f2c] inline-block"></i
-                  >Defumada</span
-                >
                 <div class="pizza-art">
-                  <div class="pizza-sketch"></div>
                   <img
-                    src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=700&q=82"
+                    src="./assets/pizzas/bacon.png"
                     alt="Pizza Bacon"
                   />
                 </div>
@@ -1088,7 +1042,7 @@
                 </p>
               </div>
               <div class="flex items-center justify-between gap-3 mt-5">
-                <span class="price">65,00</span
+                <span class="price">80,00</span
                 ><a
                   class="btn btn-ghost !min-h-10 !px-4"
                   href="https://instadelivery.com.br/forneria360"
@@ -1098,16 +1052,11 @@
                 >
               </div>
             </article>
-            <article class="pizza-tile paper-flat reveal" data-pizza-tile>
+            <article class="pizza-tile paper-flat reveal">
               <div>
-                <span class="chip"
-                  ><i class="w-2 h-2 rounded-full bg-[#c91f2c] inline-block"></i
-                  >Leve</span
-                >
                 <div class="pizza-art">
-                  <div class="pizza-sketch"></div>
                   <img
-                    src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=700&q=82"
+                    src="./assets/pizzas/frango.png"
                     alt="Pizza Frango"
                   />
                 </div>
@@ -1122,7 +1071,7 @@
                 </p>
               </div>
               <div class="flex items-center justify-between gap-3 mt-5">
-                <span class="price">65,00</span
+                <span class="price">80,00</span
                 ><a
                   class="btn btn-ghost !min-h-10 !px-4"
                   href="https://instadelivery.com.br/forneria360"
@@ -1132,16 +1081,11 @@
                 >
               </div>
             </article>
-            <article class="pizza-tile paper-flat reveal" data-pizza-tile>
+            <article class="pizza-tile paper-flat reveal">
               <div>
-                <span class="chip"
-                  ><i class="w-2 h-2 rounded-full bg-[#c91f2c] inline-block"></i
-                  >Especial</span
-                >
                 <div class="pizza-art">
-                  <div class="pizza-sketch"></div>
                   <img
-                    src="./assets/peperoni.jpg"
+                    src="./assets/pizzas/pepperoni.png"
                     alt="Pizza Pepperoni"
                   />
                 </div>
@@ -1155,7 +1099,7 @@
                 </p>
               </div>
               <div class="flex items-center justify-between gap-3 mt-5">
-                <span class="price">75,00</span
+                <span class="price">90,00</span
                 ><a
                   class="btn btn-ghost !min-h-10 !px-4"
                   href="https://instadelivery.com.br/forneria360"
@@ -1165,16 +1109,11 @@
                 >
               </div>
             </article>
-            <article class="pizza-tile paper-flat reveal" data-pizza-tile>
+            <article class="pizza-tile paper-flat reveal">
               <div>
-                <span class="chip"
-                  ><i class="w-2 h-2 rounded-full bg-[#c91f2c] inline-block"></i
-                  >Cremosa</span
-                >
                 <div class="pizza-art">
-                  <div class="pizza-sketch"></div>
                   <img
-                    src="./assets/3queijos.jpg"
+                    src="./assets/pizzas/3_queijos.png"
                     alt="Pizza Três queijos"
                   />
                 </div>
@@ -1188,7 +1127,7 @@
                 </p>
               </div>
               <div class="flex items-center justify-between gap-3 mt-5">
-                <span class="price">75,00</span
+                <span class="price">90,00</span
                 ><a
                   class="btn btn-ghost !min-h-10 !px-4"
                   href="https://instadelivery.com.br/forneria360"
@@ -1198,16 +1137,11 @@
                 >
               </div>
             </article>
-            <article class="pizza-tile paper-flat reveal" data-pizza-tile>
+            <article class="pizza-tile paper-flat reveal">
               <div>
-                <span class="chip"
-                  ><i class="w-2 h-2 rounded-full bg-[#c91f2c] inline-block"></i
-                  >Especial</span
-                >
                 <div class="pizza-art">
-                  <div class="pizza-sketch"></div>
                   <img
-                    src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=700&q=82"
+                    src="./assets/pizzas/bacon_requeijao.png"
                     alt="Pizza Bacon com requeijão"
                   />
                 </div>
@@ -1222,7 +1156,7 @@
                 </p>
               </div>
               <div class="flex items-center justify-between gap-3 mt-5">
-                <span class="price">75,00</span
+                <span class="price">90,00</span
                 ><a
                   class="btn btn-ghost !min-h-10 !px-4"
                   href="https://instadelivery.com.br/forneria360"
@@ -1232,16 +1166,11 @@
                 >
               </div>
             </article>
-            <article class="pizza-tile paper-flat reveal" data-pizza-tile>
+            <article class="pizza-tile paper-flat reveal">
               <div>
-                <span class="chip"
-                  ><i class="w-2 h-2 rounded-full bg-[#c91f2c] inline-block"></i
-                  >Conforto</span
-                >
                 <div class="pizza-art">
-                  <div class="pizza-sketch"></div>
                   <img
-                    src="https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=700&q=82"
+                    src="./assets/pizzas/frango_requeijao.png"
                     alt="Pizza Frango com requeijão"
                   />
                 </div>
@@ -1256,7 +1185,7 @@
                 </p>
               </div>
               <div class="flex items-center justify-between gap-3 mt-5">
-                <span class="price">75,00</span
+                <span class="price">90,00</span
                 ><a
                   class="btn btn-ghost !min-h-10 !px-4"
                   href="https://instadelivery.com.br/forneria360"
@@ -1283,20 +1212,27 @@
               >
                 <span class="menu-preview-badge">Clique para ampliar</span>
                 <img
-                  src="./assets/cardapio-atual-forneria-360.jpeg"
+                  src="./assets/Cardapio_Forneria.jpeg"
                   alt="Cardápio atual da Forneria 360º"
                   class="rounded-3xl shadow-xl max-h-[520px] object-contain bg-[#fff4d6]"
                 />
               </button>
             </div>
           </div>
-          <div class="text-center mt-10 reveal">
+          <div class="flex flex-col sm:flex-row justify-center gap-3 mt-10 reveal">
             <a
               class="btn btn-red"
               href="https://instadelivery.com.br/forneria360"
               target="_blank"
               rel="noopener"
               >Abrir pedido no InstaDelivery</a
+            >
+            <a
+              class="btn btn-green"
+              href="https://wa.me/5532999413289?text=Quero%20fazer%20uma%20reserva%20para%20comer%20a%20melhor%20pizza%20napolitana%20do%20forno%20pra%20mesa%21"
+              target="_blank"
+              rel="noopener"
+              >Fazer sua reserva</a
             >
           </div>
         </div>
@@ -1401,7 +1337,7 @@
       </button>
 
       <img
-        src="./assets/cardapio-atual-forneria-360.jpeg"
+        src="./assets/Cardapio_Forneria.jpeg"
         alt="Cardápio atual da Forneria 360º ampliado"
       />
     </div>
@@ -1444,13 +1380,6 @@
       document
         .querySelectorAll(".reveal")
         .forEach((el) => observer.observe(el));
-      const tiles = document.querySelectorAll("[data-pizza-tile]");
-      tiles.forEach((tile) =>
-        tile.addEventListener("click", () => {
-          tiles.forEach((t) => t.classList.remove("is-active"));
-          tile.classList.add("is-active");
-        }),
-      );
       const openMenuViewer = document.querySelector("[data-open-menu-viewer]");
       const imageViewer = document.querySelector("[data-image-viewer]");
       const closeMenuViewer = document.querySelector("[data-close-menu-viewer]");
@@ -1495,7 +1424,3 @@
     </script>
   </body>
 </html>
-
-
-
-

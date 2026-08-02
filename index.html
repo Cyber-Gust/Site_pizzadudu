@@ -372,67 +372,38 @@
         gap: 18px;
       }
       .pizza-tile {
-        cursor: pointer;
-        padding: 22px;
+        padding: 0;
         min-height: 430px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        transition: 0.3s ease;
         position: relative;
         overflow: hidden;
       }
-
-      .pizza-tile:hover,
-      .pizza-tile.is-active {
-        transform: translateY(-8px);
-        box-shadow: var(--shadow);
+      .pizza-tile h3,
+      .pizza-tile .ingredient {
+        margin-left: 22px;
+        margin-right: 22px;
       }
-      .pizza-tile:hover::after,
-      .pizza-tile.is-active::after {
-        transform: scale(1);
+      .pizza-tile > .flex {
+        padding: 0 22px 22px;
       }
       .pizza-art {
         position: relative;
-        height: 190px;
-        display: grid;
-        place-items: center;
-        margin: -4px 0 12px;
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        min-height: 210px;
+        margin: 0 0 22px;
+        overflow: hidden;
+        background: #e7ddc5;
       }
       .pizza-art img {
-        position: absolute;
-        width: 180px;
-        height: 180px;
-        border-radius: 50%;
+        display: block;
+        width: 100%;
+        height: 100%;
         object-fit: cover;
-        transition: 0.38s ease;
-        opacity: 0.08;
-        filter: grayscale(1) contrast(1.45);
-        transform: scale(0.92);
-      }
-      .pizza-tile:hover .pizza-art img,
-      .pizza-tile.is-active .pizza-art img {
         opacity: 1;
         filter: none;
-        transform: scale(1.05) rotate(3deg);
-        box-shadow: 0 18px 30px rgba(42, 25, 11, 0.18);
-      }
-      .pizza-sketch {
-        position: absolute;
-        width: 180px;
-        height: 180px;
-        border-radius: 50%;
-        background-image: url("./assets/pizza-desenho.png");
-        background-size: contain;
-        background-position: center;
-        background-repeat: no-repeat;
-        transition: 0.3s ease;
-        opacity: 0.85;
-      }
-      .pizza-tile:hover .pizza-sketch,
-      .pizza-tile.is-active .pizza-sketch {
-        opacity: 0;
-        transform: scale(0.8) rotate(-12deg);
       }
       .price {
         font-family: "Cormorant Garamond", serif;
@@ -1045,213 +1016,182 @@
         }
       }
 
-      /* ===== HERO FINAL ORGANIZADA ===== */
+      /* ===== HERO REDESENHADA (CARD PASTEL OVERLAP) ===== */
       .hero-napoletana {
-        min-height: 100svh;
-        padding-top: 76px;
+        position: relative;
+        min-height: clamp(620px, 85vh, 880px);
+        padding-top: 90px;
+        padding-bottom: 60px; /* Espaço para o card se sobrepor à borda */
         display: flex;
         align-items: center;
-        position: relative;
-        overflow: hidden;
-        background: #f7ecd2;
+        background: var(--green-2);
+        overflow: visible; /* Permite a sobreposição na seção inferior */
       }
 
       .hero-bg {
         position: absolute;
         inset: 0;
         z-index: 0;
+        overflow: hidden;
       }
 
       .hero-bg img {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        object-position: 72% center;
-        filter: saturate(1.05) contrast(1.06);
+        object-position: 70% center;
+        filter: saturate(1.1) contrast(1.05);
       }
 
-      .hero-overlay {
+      /* Escurecimento suave apenas na borda esquerda e inferior para acabamento */
+      .hero-overlay-subtle {
         position: absolute;
         inset: 0;
         z-index: 1;
-        background:
-          linear-gradient(
-            90deg,
-            rgba(247, 237, 212, 0.98) 0%,
-            rgba(247, 237, 212, 0.92) 30%,
-            rgba(247, 237, 212, 0.55) 48%,
-            rgba(247, 237, 212, 0.16) 70%,
-            rgba(23, 63, 42, 0.08) 100%
-          ),
-          linear-gradient(
-            180deg,
-            rgba(255, 244, 214, 0.48) 0%,
-            rgba(255, 244, 214, 0) 36%,
-            rgba(17, 21, 15, 0.16) 100%
-          );
+        background: linear-gradient(
+          180deg,
+          rgba(15, 43, 29, 0.4) 0%,
+          transparent 40%,
+          rgba(255, 244, 214, 0.2) 100%
+        );
+        pointer-events: none;
       }
 
-      .hero-napoletana-grid {
+      .hero-napoletana-container {
         position: relative;
         z-index: 2;
-        width: 100%;
-        min-height: calc(100svh - 76px);
-        display: grid;
-        grid-template-columns: minmax(0, 760px);
-        align-items: center;
-        padding-top: clamp(42px, 6vw, 80px);
-        padding-bottom: clamp(52px, 7vw, 90px);
+        width: min(1280px, calc(100% - 32px));
+        margin-inline: auto;
       }
 
-      
+      /* Card Pastel Flutuante */
+      .hero-card-floating {
+        background: rgba(255, 250, 240, 0.94);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid rgba(23, 63, 42, 0.16);
+        border-radius: 32px;
+        padding: clamp(28px, 4.5vw, 52px);
+        max-width: 580px;
+        box-shadow: 0 30px 80px rgba(15, 27, 18, 0.25);
+        margin-bottom: -100px; /* Puxa o card para fora da hero na parte inferior */
+        transform: translateY(0);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
 
-      .hero-location {
-        margin: 0 0 18px;
+      .hero-card-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 16px;
+      }
+
+      .hero-location-badge {
         color: var(--red);
         font-size: 0.78rem;
-        font-weight: 900;
-        letter-spacing: 0.22em;
+        font-weight: 800;
+        letter-spacing: 0.2em;
         text-transform: uppercase;
       }
 
       .hero-title {
         color: var(--green);
-        max-width: 760px;
-        font-size: clamp(3rem, 6vw, 6rem);
-        line-height: 0.9;
-        letter-spacing: -0.055em;
+        font-size: clamp(2.4rem, 4.2vw, 4.2rem);
+        line-height: 0.94;
+        letter-spacing: -0.04em;
         text-wrap: balance;
-        text-shadow: 0 12px 38px rgba(255, 244, 214, 0.72);
       }
 
       .hero-text {
-        max-width: 640px;
-        margin-top: 24px;
-        font-size: clamp(1rem, 1.45vw, 1.16rem);
-        line-height: 1.68;
-        color: rgba(27, 27, 22, 0.72);
+        margin-top: 18px;
+        color: var(--muted);
+        font-size: clamp(1rem, 1.2vw, 1.15rem);
+        line-height: 1.6;
       }
 
       .hero-actions {
         display: flex;
         flex-wrap: wrap;
-        gap: 14px;
+        gap: 12px;
         margin-top: 28px;
       }
 
-      .btn-light {
-        background: rgba(255, 250, 238, 0.82);
-        color: #143f2a;
-        border: 1px solid rgba(20, 63, 42, 0.22);
-        box-shadow: none;
+      .hero-actions .btn {
+        flex: 1 1 auto;
+        text-align: center;
       }
 
-      .btn-light:hover {
-        background: #fff8e8;
-        border-color: rgba(20, 63, 42, 0.38);
+      /* Ajustes no Padding da Seção do Cardápio para acomodar o overlap */
+      #cardapio {
+        padding-top: 130px !important;
       }
 
-      .hero-signature {
-        display: flex;
-        align-items: center;
-        gap: 16px;
-        margin-top: 30px;
-        max-width: 540px;
-      }
-
-      .hero-signature span {
-        width: 64px;
-        height: 1px;
-        background: rgba(20, 63, 42, 0.45);
-        flex: 0 0 auto;
-      }
-
-      .hero-signature p {
-        margin: 0;
-        color: #143f2a;
-        font-size: 0.9rem;
-        line-height: 1.5;
-        font-weight: 700;
-      }
-
-      /* remove visual antigo caso ainda exista no HTML */
-      .hero-meta,
-      .hero-kicker {
-        display: none;
-      }
-
+      /* ===== RESPONSIVIDADE MOBILE ===== */
       @media (max-width: 980px) {
         .hero-napoletana {
+          display: block; /* Remove o flex que empurrava o card pro lado */
           min-height: auto;
-          padding-top: 70px;
+          padding-top: 380px; /* Reserva o espaço superior para a foto */
+          padding-bottom: 40px;
+        }
+
+        .hero-bg,
+        .hero-overlay-subtle {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 480px; /* A foto fica fixada no topo da tela */
+          width: 100%;
         }
 
         .hero-bg img {
           object-position: center;
-          opacity: 0.72;
         }
 
-        .hero-overlay {
-          background:
-            linear-gradient(
-              180deg,
-              rgba(247, 237, 212, 0.98) 0%,
-              rgba(247, 237, 212, 0.9) 48%,
-              rgba(247, 237, 212, 0.72) 100%
-            );
+        .hero-napoletana-container {
+          position: relative;
+          z-index: 10;
+          width: min(100% - 32px, 600px);
+          margin-top: -140px; /* O 'pulo do gato': puxa o card pra cima da foto */
         }
 
-        .hero-napoletana-grid {
-          min-height: auto;
-          padding-top: 48px;
-          padding-bottom: 58px;
-        }
-
-        .hero-copy {
-          margin-top: 0;
-        }
-
-        .hero-title {
-          font-size: clamp(2.9rem, 12vw, 5rem);
-          line-height: 0.92;
-        }
-      }
-
-      @media (max-width: 640px) {
-        .hero-location {
-          margin-bottom: 14px;
-          font-size: 0.72rem;
-          letter-spacing: 0.18em;
-        }
-
-        .hero-title {
-          font-size: clamp(2.5rem, 12vw, 4rem);
+        .hero-card-floating {
           max-width: 100%;
-        }
-
-        .hero-text {
-          max-width: 100%;
-          font-size: 1rem;
-          line-height: 1.6;
+          margin-bottom: 0; /* Remove a sobra de espaço do desktop */
+          padding: 32px 24px;
+          border-radius: 24px;
         }
 
         .hero-actions {
           flex-direction: column;
-          margin-top: 24px;
         }
 
         .hero-actions .btn {
           width: 100%;
-          justify-content: center;
         }
 
-        .hero-signature {
-          align-items: flex-start;
+        #cardapio {
+          padding-top: 80px !important;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .hero-napoletana {
+          padding-top: 320px; /* Proporção menor para celulares menores */
         }
 
-        .hero-signature span {
-          width: 42px;
-          margin-top: 10px;
+        .hero-bg,
+        .hero-overlay-subtle {
+          height: 400px; 
+        }
+
+        .hero-napoletana-container {
+          margin-top: -110px; /* Ajuste do overlap no celular */
+        }
+
+        .hero-title {
+          font-size: clamp(2.3rem, 12vw, 3rem);
         }
       }
 
@@ -1326,21 +1266,27 @@
     </header>
     <main>
       <section class="hero hero-napoletana" id="inicio">
+        <!-- Imagem de fundo completa sem overlay pesado -->
         <div class="hero-bg">
           <img
-            src="assets/fornoalenha.jpg"
+            src="assets/banenr_2.jpeg"
             alt="Pizza napolitana artesanal saindo do forno"
           />
         </div>
+        <div class="hero-overlay-subtle"></div>
 
-        <div class="hero-overlay"></div>
-
-        <div class="wide hero-napoletana-grid">
-          <div class="hero-copy reveal">
-            <p class="hero-location">São João del-Rei</p>
+        <div class="wide hero-napoletana-container">
+          <!-- Card flutuante estilo papel artesanal (invadindo a borda inferior) -->
+          <div class="hero-card-floating reveal">
+            <div class="hero-card-header">
+              <span class="hero-location-badge">São João del-Rei</span>
+              <div class="italy-flag">
+                <span></span><span></span><span></span>
+              </div>
+            </div>
 
             <h1 class="display hero-title">
-              Pizza napolitana artesanal com tradição e .
+              Pizza napolitana artesanal com tradição
             </h1>
 
             <p class="body-lg hero-text">
@@ -1357,8 +1303,13 @@
                 Ver cardápio e pedir
               </a>
 
-              <a class="btn btn-light" href="localizacao.html">
-                Como chegar
+              <a
+                class="btn btn-ghost"
+                href="https://wa.me/5532999413289?text=Quero%20fazer%20uma%20reserva%20para%20comer%20a%20melhor%20pizza%20napolitana%20do%20forno%20pra%20mesa%21"
+                target="_blank"
+                rel="noopener"
+              >
+                Fazer sua reserva
               </a>
             </div>
           </div>
@@ -1376,21 +1327,13 @@
                 Aqui estão nossas pizzas
               </h2>
             </div>
-            <p class="body-lg md:max-w-md">
-              Toque em uma pizza para ela sair do desenho!
-            </p>
           </div>
           <div class="pizza-grid mt-12">
-            <article class="pizza-tile paper-flat reveal" data-pizza-tile>
+            <article class="pizza-tile paper-flat reveal">
               <div>
-                <span class="chip"
-                  ><i class="w-2 h-2 rounded-full bg-[#c91f2c] inline-block"></i
-                  >Clássica</span
-                >
                 <div class="pizza-art">
-                  <div class="pizza-sketch"></div>
                   <img
-                    src="./assets/marguerita.jpg"
+                    src="./assets/pizzas/marguerita.png"
                     alt="Pizza Margherita"
                   />
                 </div>
@@ -1405,7 +1348,7 @@
                 </p>
               </div>
               <div class="flex items-center justify-between gap-3 mt-5">
-                <span class="price">65,00</span
+                <span class="price">80,00</span
                 ><a
                   class="btn btn-ghost !min-h-10 !px-4"
                   href="https://instadelivery.com.br/forneria360"
@@ -1415,16 +1358,11 @@
                 >
               </div>
             </article>
-            <article class="pizza-tile paper-flat reveal" data-pizza-tile>
+            <article class="pizza-tile paper-flat reveal">
               <div>
-                <span class="chip"
-                  ><i class="w-2 h-2 rounded-full bg-[#c91f2c] inline-block"></i
-                  >Queridinha</span
-                >
                 <div class="pizza-art">
-                  <div class="pizza-sketch"></div>
                   <img
-                    src="./assets/calabresa.jpg"
+                    src="./assets/pizzas/calabresa.png"
                     alt="Pizza Calabresa"
                   />
                 </div>
@@ -1439,7 +1377,7 @@
                 </p>
               </div>
               <div class="flex items-center justify-between gap-3 mt-5">
-                <span class="price">65,00</span
+                <span class="price">80,00</span
                 ><a
                   class="btn btn-ghost !min-h-10 !px-4"
                   href="https://instadelivery.com.br/forneria360"
@@ -1449,19 +1387,11 @@
                 >
               </div>
             </article>
-            <article
-              class="pizza-tile paper-flat reveal is-active"
-              data-pizza-tile
-            >
+            <article class="pizza-tile paper-flat reveal">
               <div>
-                <span class="chip"
-                  ><i class="w-2 h-2 rounded-full bg-[#c91f2c] inline-block"></i
-                  >Defumada</span
-                >
                 <div class="pizza-art">
-                  <div class="pizza-sketch"></div>
                   <img
-                    src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=700&q=82"
+                    src="assets/pizzas/bacon.png"
                     alt="Pizza Bacon"
                   />
                 </div>
@@ -1475,7 +1405,7 @@
                 </p>
               </div>
               <div class="flex items-center justify-between gap-3 mt-5">
-                <span class="price">65,00</span
+                <span class="price">80,00</span
                 ><a
                   class="btn btn-ghost !min-h-10 !px-4"
                   href="https://instadelivery.com.br/forneria360"
@@ -1485,16 +1415,11 @@
                 >
               </div>
             </article>
-            <article class="pizza-tile paper-flat reveal" data-pizza-tile>
+            <article class="pizza-tile paper-flat reveal">
               <div>
-                <span class="chip"
-                  ><i class="w-2 h-2 rounded-full bg-[#c91f2c] inline-block"></i
-                  >Leve</span
-                >
                 <div class="pizza-art">
-                  <div class="pizza-sketch"></div>
                   <img
-                    src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=700&q=82"
+                    src="assets/pizzas/frango.png"
                     alt="Pizza Frango"
                   />
                 </div>
@@ -1509,7 +1434,7 @@
                 </p>
               </div>
               <div class="flex items-center justify-between gap-3 mt-5">
-                <span class="price">65,00</span
+                <span class="price">80,00</span
                 ><a
                   class="btn btn-ghost !min-h-10 !px-4"
                   href="https://instadelivery.com.br/forneria360"
@@ -1519,16 +1444,11 @@
                 >
               </div>
             </article>
-            <article class="pizza-tile paper-flat reveal" data-pizza-tile>
+            <article class="pizza-tile paper-flat reveal">
               <div>
-                <span class="chip"
-                  ><i class="w-2 h-2 rounded-full bg-[#c91f2c] inline-block"></i
-                  >Especial</span
-                >
                 <div class="pizza-art">
-                  <div class="pizza-sketch"></div>
                   <img
-                    src="./assets/peperoni.jpg"
+                    src="./assets/pizzas/pepperoni.png"
                     alt="Pizza Pepperoni"
                   />
                 </div>
@@ -1542,7 +1462,7 @@
                 </p>
               </div>
               <div class="flex items-center justify-between gap-3 mt-5">
-                <span class="price">75,00</span
+                <span class="price">90,00</span
                 ><a
                   class="btn btn-ghost !min-h-10 !px-4"
                   href="https://instadelivery.com.br/forneria360"
@@ -1552,16 +1472,11 @@
                 >
               </div>
             </article>
-            <article class="pizza-tile paper-flat reveal" data-pizza-tile>
+            <article class="pizza-tile paper-flat reveal">
               <div>
-                <span class="chip"
-                  ><i class="w-2 h-2 rounded-full bg-[#c91f2c] inline-block"></i
-                  >Cremosa</span
-                >
                 <div class="pizza-art">
-                  <div class="pizza-sketch"></div>
                   <img
-                    src="./assets/3queijos.jpg"
+                    src="./assets/pizzas/3_queijos.png"
                     alt="Pizza Três queijos"
                   />
                 </div>
@@ -1575,7 +1490,7 @@
                 </p>
               </div>
               <div class="flex items-center justify-between gap-3 mt-5">
-                <span class="price">75,00</span
+                <span class="price">90,00</span
                 ><a
                   class="btn btn-ghost !min-h-10 !px-4"
                   href="https://instadelivery.com.br/forneria360"
@@ -1585,16 +1500,11 @@
                 >
               </div>
             </article>
-            <article class="pizza-tile paper-flat reveal" data-pizza-tile>
+            <article class="pizza-tile paper-flat reveal">
               <div>
-                <span class="chip"
-                  ><i class="w-2 h-2 rounded-full bg-[#c91f2c] inline-block"></i
-                  >Especial</span
-                >
                 <div class="pizza-art">
-                  <div class="pizza-sketch"></div>
                   <img
-                    src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=700&q=82"
+                    src="assets/pizzas/bacon_requeijao.png"
                     alt="Pizza Bacon com requeijão"
                   />
                 </div>
@@ -1609,7 +1519,7 @@
                 </p>
               </div>
               <div class="flex items-center justify-between gap-3 mt-5">
-                <span class="price">75,00</span
+                <span class="price">90,00</span
                 ><a
                   class="btn btn-ghost !min-h-10 !px-4"
                   href="https://instadelivery.com.br/forneria360"
@@ -1619,16 +1529,11 @@
                 >
               </div>
             </article>
-            <article class="pizza-tile paper-flat reveal" data-pizza-tile>
+            <article class="pizza-tile paper-flat reveal">
               <div>
-                <span class="chip"
-                  ><i class="w-2 h-2 rounded-full bg-[#c91f2c] inline-block"></i
-                  >Conforto</span
-                >
                 <div class="pizza-art">
-                  <div class="pizza-sketch"></div>
                   <img
-                    src="https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=700&q=82"
+                    src="assets/pizzas/frango_requeijao.png"
                     alt="Pizza Frango com requeijão"
                   />
                 </div>
@@ -1643,7 +1548,7 @@
                 </p>
               </div>
               <div class="flex items-center justify-between gap-3 mt-5">
-                <span class="price">75,00</span
+                <span class="price">90,00</span
                 ><a
                   class="btn btn-ghost !min-h-10 !px-4"
                   href="https://instadelivery.com.br/forneria360"
@@ -1658,32 +1563,6 @@
         </div>
       </section>
       <div class="leaf-line"></div>
-      <section class="section-tight">
-        <div
-          class="container grid grid-cols-1 sm:grid-cols-3 paper overflow-hidden reveal"
-        >
-          <div class="stat">
-            <strong>360º</strong
-            ><span
-              >uma marca pensada para girar em torno do forno, da massa e da
-              experiência</span
-            >
-          </div>
-          <div class="stat">
-            <strong>5 dias</strong
-            ><span
-              >presencial e delivery de quarta a domingo, das 18h50 as 22h50</span
-            >
-          </div>
-          <div class="stat">
-            <strong>8</strong
-            ><span
-              >sabores principais no cardápio atual, entre clássicas e
-              especiais</span
-            >
-          </div>
-        </div>
-      </section>
       <section class="section">
         <div class="p-0 container dudu-card paper reveal">
           <img
@@ -1729,9 +1608,16 @@
               forno trabalhando e receber a pizza quentinha, no minuto em que
               ela nasce.
             </p>
-            <a href="localizacao.html" class="btn btn-red mt-7"
-              >Ver localização</a
-            >
+            <div class="flex flex-col sm:flex-row gap-3 mt-7">
+              <a href="localizacao.html" class="btn btn-ghost">Ver localização</a>
+              <a
+                href="https://wa.me/5532999413289?text=Quero%20fazer%20uma%20reserva%20para%20comer%20a%20melhor%20pizza%20napolitana%20do%20forno%20pra%20mesa%21"
+                class="btn btn-red"
+                target="_blank"
+                rel="noopener"
+                >Fazer sua reserva</a
+              >
+            </div>
           </div>
           <div class="photo-stack reveal">
             <img
@@ -1744,7 +1630,7 @@
               alt="Mesa de restaurante acolhedor"
             /><img
               class="three"
-              src="/assets/marguerita.jpg"
+              src="/assets/banner_1.jpeg"
               alt="Pizza artesanal"
             />
           </div>
@@ -1828,6 +1714,12 @@
                 target="_blank"
                 rel="noopener"
                 >Abrir no Google Maps</a
+              ><a
+                class="btn btn-red"
+                href="https://wa.me/5532999413289?text=Quero%20fazer%20uma%20reserva%20para%20comer%20a%20melhor%20pizza%20napolitana%20do%20forno%20pra%20mesa%21"
+                target="_blank"
+                rel="noopener"
+                >Fazer sua reserva</a
               ><a
                 class="btn btn-ghost"
                 href="https://www.google.com/search?q=Forneria+360+Delivery+S%C3%A3o+Jo%C3%A3o+del+Rei#lrd=0xa1c97e48efd74d:0xf8ba122b0eaef26c,3,,,"
@@ -1963,19 +1855,8 @@
       document
         .querySelectorAll(".reveal")
         .forEach((el) => observer.observe(el));
-      const tiles = document.querySelectorAll("[data-pizza-tile]");
-      tiles.forEach((tile) =>
-        tile.addEventListener("click", () => {
-          tiles.forEach((t) => t.classList.remove("is-active"));
-          tile.classList.add("is-active");
-        }),
-      );
     </script>
   </body>
 </html>
-
-
-
-
 
 
